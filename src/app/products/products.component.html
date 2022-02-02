@@ -1,0 +1,87 @@
+<!-------------------Day 1 ---------------------------->
+<!-- <style>
+    img{
+        width: 300px;
+        height: 300px;
+    }
+</style> -->
+<!-- <h1>Store Name is : {{storeName}}</h1> -->
+<!-- <h3>We offer an explicit discount of {{Discount}}</h3> -->
+<!-- <h3>{{"We offer an explicit discount of " +Discount}}</h3> -->
+<!-- <img [src]="ProductList[0].Img" alt=""> -->
+
+<h1>Question one</h1>
+<h2 *ngIf="Discount ;then thenBlock"></h2>
+<ng-template #thenBlock>
+    <h3>We offer an explicit discount of {{Discount}}</h3>
+</ng-template>
+
+<br>
+
+<h3>Drop Down Question</h3>
+<select>
+    <option value="default">Choose Category</option>
+    <option *ngFor="let category of CategoryList" [value]="category">
+        {{category.Name}}
+    </option>
+</select>
+<br><br><br>
+
+
+<h3>Table Question</h3>
+<table style="width:70%">
+    <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    <tr *ngFor="let product of ProductList">
+        <td>{{product.Name}}</td>
+        <td>{{product.Quantity}}</td>
+        <td>{{product.Price}}</td>
+      </tr>
+</table>
+<br><br><br>
+
+<h3>Two ways Question</h3>
+<input type="text" [(ngModel)]="clientName"/><br>
+<span>Client Name Is : {{clientName}} </span>
+
+<br><br><br>
+
+<h3>Question Five</h3>
+<button (click)="toogled()"  type="button" class="btn btn-lg btn-outline-danger">Buy Toggle Button</button>
+<h4 *ngIf="IsPurshased ;then thenBlock1 , else elseBlock1"></h4>
+<ng-template #thenBlock1>
+    <table style="width:70%">
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        <tr *ngFor="let product of ProductList">
+            <td>{{product.Name}}</td>
+            <td>{{product.Quantity}}</td>
+            <td>{{product.Price}}</td>
+          </tr>
+    </table>
+    
+</ng-template>
+
+<ng-template #elseBlock1>
+    <h5>{{"Thanks for purchasing from our Store " +clientName}}</h5>
+</ng-template>
+<br>
+
+<h4>Question six</h4>
+<input type="text" value="{{storeName | uppercase}}">
+<br><br>
+<input type="text" value="{{Discount | percent}}">
+<br><br>
+
+<div>
+    <h4>First Bonus</h4>
+    <input class="form-control" type="text" placeholder="Matched Elements : {{ ['Arwa' ,'Areeg' ,'Hala' ,'Amr' ,'Marwa'] | array: 'Arwa':'Amr':'Marwa'}}" readonly="" >
+</div>
+<br><br>
+
