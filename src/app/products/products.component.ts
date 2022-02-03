@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductServiceService } from '../Services/product-service.service';
 import { DiscountOffers } from '../Shared Classes and types/enum';
 import { ICategory, IProduct } from '../Shared Classes and types/Interface';
 
@@ -10,31 +11,16 @@ import { ICategory, IProduct } from '../Shared Classes and types/Interface';
 })
 export class ProductsComponent implements OnInit {
   Discount:DiscountOffers;
-  ProductList:IProduct[];
+  ProductList!:IProduct[];
   CategoryList:ICategory[]
-  storeName:string ; 
-  storeLogo:string ; 
+  storeName:string ;
+  storeLogo:string ;
   clientName:string ;
   IsPurshased:Boolean;
 
-  constructor() {
+  constructor(private productService:ProductServiceService) {
     this.Discount = DiscountOffers.Discount;
-    this.ProductList = [{
-      ID:1,
-      Name:"11 PRO",
-      Quantity:25,
-      Price:20000,
-      Img:'./assets/img/one.jpeg'
-    },
-    {
-      ID:2,
-      Name:"12 PRO",
-      Quantity:20,
-      Price:300000,
-      Img:'./assets/img/one.jpeg'
-    }
 
-  ];
     this.CategoryList =[{
       ID: 1,
       Name :"Phones"
@@ -56,10 +42,22 @@ export class ProductsComponent implements OnInit {
     this.storeLogo="apple";
     this.clientName="Arwa";
     this.IsPurshased=true;
+
    }
+  productList!:IProduct[];
+  productId:string = '';
+  productObject!:IProduct;
   ngOnInit(): void {
   }
-  toogled(){
-    this.IsPurshased = !this.IsPurshased;
+  update(){
+    this.productObject = this.productService.GetProductById(+this.productId)
   }
+  //Obsrvable
+  renderValues(){
+    // this.productList = this.productService.getAllProducts();
+    this.productService.getAllProducts().subscribe(results => this.productList = results)
+  }
+  // toogled(){
+  //   this.IsPurshased = !this.IsPurshased;
+  // }
 }
