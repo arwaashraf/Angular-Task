@@ -8,6 +8,12 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { FormsModule } from '@angular/forms';
 import { ArrayPipe } from './pipes/array.pipe';
+import { PostsComponent } from './posts/posts.component';
+import { UsersComponent } from './users/users.component';
+import { HomeComponent } from './home/home.component';
+import { PageotfoundComponent } from './pageotfound/pageotfound.component';
+import {HttpClientModule} from '@angular/common/http';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +22,18 @@ import { ArrayPipe } from './pipes/array.pipe';
     FooterComponent,
     ProductsComponent,
     ArrayPipe,
+    PostsComponent,
+    UsersComponent,
+    HomeComponent,
+    PageotfoundComponent,
+    CommentComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

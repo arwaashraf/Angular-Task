@@ -20,7 +20,29 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productService:ProductServiceService) {
     this.Discount = DiscountOffers.Discount;
-
+    this.ProductList = [{
+      ID:1,
+      Name:"11 PRO",
+      Quantity:25,
+      Price:20000,
+      Img:'./assets/img/two.png'
+    },
+    {
+      ID:2,
+      Name:"12 PRO",
+      Quantity:20,
+      Price:300000,
+      Img:'./assets/img/three.png'
+    },
+    {
+      ID:3,
+      Name:"Labtop",
+      Quantity:10,
+      Price:250000,
+      Img:'./assets/img/four.png'
+    }
+  
+  ];
     this.CategoryList =[{
       ID: 1,
       Name :"Phones"
@@ -57,7 +79,7 @@ export class ProductsComponent implements OnInit {
     // this.productList = this.productService.getAllProducts();
     this.productService.getAllProducts().subscribe(results => this.productList = results)
   }
-  // toogled(){
-  //   this.IsPurshased = !this.IsPurshased;
-  // }
+  toogled(){
+    this.IsPurshased = !this.IsPurshased;
+  }
 }

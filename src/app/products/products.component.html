@@ -124,3 +124,26 @@
     <h4>{{productObject.Name}}</h4>
 </div>
 
+<h3>Question Five</h3>
+<button (click)="toogled()"  type="button" class="btn btn-lg btn-outline-danger">Buy Toggle Button</button>
+<h4 *ngIf="IsPurshased ;then thenBlock1 , else elseBlock1"></h4>
+<ng-template #thenBlock1>
+    <table style="width:70%">
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        <tr *ngFor="let product of ProductList">
+            <td>{{product.Name}}</td>
+            <td>{{product.Quantity}}</td>
+            <td>{{product.Price}}</td>
+          </tr>
+    </table>
+
+</ng-template>
+
+<ng-template #elseBlock1>
+    <h5>{{"Thanks for purchasing from our Store " +clientName}}</h5>
+</ng-template>
+<br>
