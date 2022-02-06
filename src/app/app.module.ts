@@ -14,6 +14,10 @@ import { HomeComponent } from './home/home.component';
 import { PageotfoundComponent } from './pageotfound/pageotfound.component';
 import {HttpClientModule} from '@angular/common/http';
 import { CommentComponent } from './comment/comment.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { DiscountComponent } from './discount/discount.component';
+import { NodiscountComponent } from './nodiscount/nodiscount.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +31,10 @@ import { CommentComponent } from './comment/comment.component';
     HomeComponent,
     PageotfoundComponent,
     CommentComponent,
+    RegisterComponent,
+    LoginComponent,
+    DiscountComponent,
+    NodiscountComponent,
     
   ],
   imports: [

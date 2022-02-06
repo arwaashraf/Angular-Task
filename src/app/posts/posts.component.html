@@ -1,5 +1,5 @@
 <p>posts works!</p>
-<div *ngIf="posts && posts.length != 0">
+<div *ngIf="posts && posts.length != 0" >
 <div >
     <table class="table table-success table-striped">
         <thead>
@@ -8,9 +8,9 @@
                 <th>Title</th>
                 <th>Body</th>
             </tr>
-            <tr *ngFor="let post of posts">
+            <tr *ngFor="let post of posts" >
                 <td>{{post.id}}</td>
-                <td>{{post.title}}</td>
+                <td [class.bg-warning]="isSelected(post)">{{post.title}}</td>
                 <a routerLink="./{{post.id}}" class="btn btn-primary">view Comments</a>
                 <td>{{post.body}}</td>
             </tr>

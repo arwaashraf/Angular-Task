@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductServiceService } from '../Services/product-service.service';
 import { DiscountOffers } from '../Shared Classes and types/enum';
 import { ICategory, IProduct } from '../Shared Classes and types/Interface';
@@ -18,7 +19,7 @@ export class ProductsComponent implements OnInit {
   clientName:string ;
   IsPurshased:Boolean;
 
-  constructor(private productService:ProductServiceService) {
+  constructor(private productService:ProductServiceService, private activatedRoute:ActivatedRoute,private router:Router) {
     this.Discount = DiscountOffers.Discount;
     this.ProductList = [{
       ID:1,
@@ -81,5 +82,13 @@ export class ProductsComponent implements OnInit {
   }
   toogled(){
     this.IsPurshased = !this.IsPurshased;
+  }
+  Discountfn()
+  {
+    this.router.navigate(['discount'],{relativeTo:this.activatedRoute});
+  }
+  NoDiscount()
+  {
+    this.router.navigate(['nodiscount'],{relativeTo:this.activatedRoute});
   }
 }

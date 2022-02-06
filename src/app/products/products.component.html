@@ -101,7 +101,7 @@
 
 
 
-<div *ngIf="productList && productList.length != 0">
+<!-- <div *ngIf="productList && productList.length != 0">
     <div >
         <table style="width:70%">
             <tr>
@@ -145,5 +145,10 @@
 
 <ng-template #elseBlock1>
     <h5>{{"Thanks for purchasing from our Store " +clientName}}</h5>
-</ng-template>
+</ng-template> -->
 <br>
+
+<button type="button" (click)="Discountfn()" class="btn btn-light" routerLink="/discount">Product With Discount</button>&nbsp;
+<button type="button" (click)="NoDiscount()" class="btn btn-light" routerLink="/nodiscount">Product WithOut Discount</button>
+
+<router-outlet></router-outlet>

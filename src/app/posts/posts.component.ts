@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PostsService } from '../Services/posts.service';
 interface IPost{
   id:number;
@@ -13,12 +14,19 @@ interface IPost{
 })
 export class PostsComponent implements OnInit {
   posts: IPost[] =[];
-  constructor(private postService:PostsService) { }
+  postId:any;
+  constructor(private postService:PostsService , private activateRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.postService.getAllPosts().subscribe((posts)=>{
       this.posts=posts;
-    });
+    this.activateRoute.paramMap.subscribe((params:ParamMap)=>{
+      this.postId=params.get('id')
+    })
+  });
 }
+  isSelected(post:any){
+    return parseInt(post.id)==(this.postId)
+  }
 
 }

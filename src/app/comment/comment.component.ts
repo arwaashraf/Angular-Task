@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { PostsService } from '../Services/posts.service';
 
 @Component({
@@ -10,11 +10,16 @@ import { PostsService } from '../Services/posts.service';
 export class CommentComponent implements OnInit {
   comments:any[]=[];
   post:any={};
-  constructor(private postService:PostsService, private route:ActivatedRoute) { }
+  postId:any;
+  constructor(private postService:PostsService, private route:ActivatedRoute ,private router:Router) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params:ParamMap)=>{
+      this.postId=params.get('id')
+    })
     this.getPost();
     this.getComment();
+    
   }
   getPost(){
     const id= Number(this.route.snapshot.paramMap.get('id'));
@@ -27,6 +32,11 @@ export class CommentComponent implements OnInit {
     this.postService.getComments(id).subscribe((comments)=>{
     this.comments=comments;
     });
+  }
+  goPrev()
+  {
+    // let prevId=parseInt(this.postId)-1;
+    this.router.navigate(["/posts",{id:this.postId}]);
   }
 
 
