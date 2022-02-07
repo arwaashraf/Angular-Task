@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { DiscountComponent } from './discount/discount.component';
 import { NodiscountComponent } from './nodiscount/nodiscount.component';
+import { LoginuserComponent } from './loginuser/loginuser.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NodiscountComponent } from './nodiscount/nodiscount.component';
     LoginComponent,
     DiscountComponent,
     NodiscountComponent,
+    LoginuserComponent,
     
   ],
   imports: [

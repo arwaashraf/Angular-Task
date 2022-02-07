@@ -1,4 +1,5 @@
 <p>posts works!</p>
+<!-------------------------Day 4------------------------------->
 <div *ngIf="posts && posts.length != 0" >
 <div >
     <table class="table table-success table-striped">
@@ -10,7 +11,9 @@
             </tr>
             <tr *ngFor="let post of posts" >
                 <td>{{post.id}}</td>
+                <!------------------------Day 5-------------------------------->
                 <td [class.bg-warning]="isSelected(post)">{{post.title}}</td>
+                <!------------------------Day 5-------------------------------->
                 <a routerLink="./{{post.id}}" class="btn btn-primary">view Comments</a>
                 <td>{{post.body}}</td>
             </tr>
