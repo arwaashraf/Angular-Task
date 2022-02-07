@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
   }
   goPrev()
   {
-    // let prevId=parseInt(this.postId)-1;
     this.router.navigate(["/users"]);
   }
 }
