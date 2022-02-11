@@ -1,4 +1,83 @@
 <div class="container">
+  <form class="row g-3" [formGroup]="registerationForm" (submit)="onSubmit()">
+    <div class="col-md-7">
+      <label for="inputText" class="form-label">UserName</label>
+      <input
+        type="text"
+        required
+        formControlName="userName"
+        [class.is-invalid]="userName?.invalid && userName?.touched"
+        class="form-control"
+        id="inputText"
+      />
+      <div *ngIf="userName?.invalid && userName?.touched">
+        <small class="text-danger" *ngIf="userName?.errors?.['required']"
+          >User Name is required</small
+        >
+      </div>
+    </div>
+    <div class="col-md-7">
+      <label>Email</label>
+      <input
+        [class.is-invalid]="email?.invalid && email?.touched"
+        type="text"
+        required
+        formControlName="email"
+        class="form-control"
+      />
+      <small
+        class="text-danger"
+        [class.d-none]="email?.valid || email?.untouched"
+        >Email is Required</small
+      >
+    </div>
+    <div class="col-md-7">
+      <label>password</label>
+      <input
+        formControlName="password"
+        type="password"
+        class="form-control"
+        required
+      />
+      <small
+        class="text-danger"
+        [class.d-none]="password?.valid || password?.untouched"
+        >password is Required</small
+      >
+    </div>
+
+    <div class="col-md-7">
+      <label>Confirm password</label>
+      <input
+        type="password"
+        required
+        formControlName="confirmPassword"
+        class="form-control"
+      />
+      <small class="text-danger" *ngIf="registerationForm?.errors?.['misMatch']"
+        >Password and confirm password not match</small
+      >
+    </div>
+    <br /><br /><br /><br />
+
+    <br /><br /><br />
+    <div class="col-12">
+      <button
+        type="submit"
+        class="btn btn-lg btn-danger"
+        style="margin-left: 250px"
+        (click)="goPrev()"
+        [disabled]="registerationForm.invalid"
+        [class.btn-Success]="registerationForm.invalid"
+      >
+        Registration
+      </button>
+    </div>
+  </form>
+</div>
+
+<!---------------------------TDF DAY 6------------------------------------->
+<!-- <div class="container">
   <form class="row g-3" #userForm="ngForm" novalidate (ngSubmit)="onSubmit()">
     <div class="col-md-7">
       <label for="inputText" class="form-label">User Name</label>
@@ -148,4 +227,4 @@
       </button>
     </div>
   </form>
-</div>
+</div> -->
